@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Booking | redBus</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="results-page">
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom scrolled">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-bus-front-fill"></i> red<span>Bus</span></a>
+            <div class="ms-auto d-flex align-items-center gap-2">
+                <a class="btn btn-outline-light btn-sm px-3" href="index.html"><i class="bi bi-house"></i> Home</a>
+                <a class="btn btn-outline-light btn-sm px-3" href="account.html"><i class="bi bi-ticket-perforated"></i> My Bookings</a>
+                <span data-auth-nav></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="booking-main">
+        <div class="container">
+            <!-- Journey summary -->
+            <div class="journey-summary" id="journeySummary"></div>
+
+            <div class="row g-4 mt-1">
+                <!-- Left: seat map + points + passengers -->
+                <div class="col-lg-8">
+                    <div class="booking-card">
+                        <h5 class="booking-step-title"><span class="step-num">1</span> Select Your Seats</h5>
+                        <div class="seat-legend" id="seatLegend"></div>
+                        <div class="seat-map" id="seatMap"></div>
+                    </div>
+
+                    <div class="booking-card">
+                        <h5 class="booking-step-title"><span class="step-num">2</span> Boarding &amp; Dropping Points</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Boarding Point</label>
+                                <select class="form-select" id="boardingPoint"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Dropping Point</label>
+                                <select class="form-select" id="droppingPoint"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-card">
+                        <h5 class="booking-step-title"><span class="step-num">3</span> Passenger Details</h5>
+                        <div id="passengerForms">
+                            <p class="text-muted mb-0">Please select at least one seat to add passengers.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-card">
+                        <h5 class="booking-step-title"><span class="step-num">4</span> Contact Details</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" id="contactEmail">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Mobile</label>
+                                <input type="tel" class="form-control" id="contactPhone" pattern="[0-9]{10}">
+                            </div>
+                        </div>
+                        <p class="text-muted small mt-2 mb-0"><i class="bi bi-info-circle"></i> Your ticket will be sent to these details.</p>
+                    </div>
+                </div>
+
+                <!-- Right: fare summary -->
+                <div class="col-lg-4">
+                    <div class="fare-card">
+                        <h5 class="mb-3">Fare Summary</h5>
+                        <div id="fareBreakup">
+                            <p class="text-muted">Select seats to see fare.</p>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between fare-total">
+                            <span>Total Amount</span>
+                            <span id="fareTotal">₹0</span>
+                        </div>
+                        <button class="btn btn-search w-100 mt-3" id="payBtn" disabled>
+                            <i class="bi bi-shield-lock"></i> Pay &amp; Confirm
+                        </button>
+                        <p class="text-center text-muted small mt-2 mb-0"><i class="bi bi-lock-fill"></i> 100% Safe &amp; Secure Payments (Demo)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="appToast" class="toast align-items-center text-bg-dark border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMsg">Done!</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: #fff;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul{
+    list-style: none;
+}
+
+
+/* ========== Navbar Styles ========== */
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8%;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    .logo{
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #F05A29;
+    }
+
+    .nav-links{
+        display: flex;
+        gap: 2rem;
+
+        a{
+            color: #444;
+            font-size: 1rem;
+            transition: color 0.3s;
+
+            &:hover{
+                color: #2B6CB0;
+            }
+        }
+    }
+}
+
+
+/* ========== Hero Styles ========== */
+
+.hero{
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 8%;
+    background: linear-gradient(135deg, #f05b29db,#ea5e2fdb,#eb6133db, #e86b42db, #eb7a33db, #eb9233db);
+
+    .hero-content{
+
+        h1{
+            font-size: 5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        p{
+            font-size: 2rem;
+            color: #E6F0FA;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons{
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+    }
+}
+
+
+/* ========== Button Styles ========== */
+
+.btn{
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+
+    &:hover{
+        transform: translateY(-3px);
+    }
+}
+
+.btn-primary{
+    background: #fff;
+    color: #F05A29;
+
+    &:hover{
+        background: #EBF4FF;
+    }
+}
+
+.btn-secondary{
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+
+    &:hover{
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+
+/* ========== Features Styles ========== */
+
+.features{
+    padding: 5rem 8%;
+
+    h2{
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+    }
+
+    .feature-grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        .feature-card{
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+
+            &:hover{
+                transform: translateY(-8px);
+                box-shadow: 0 8px 20px #dd886b9e;
+            }
+
+            .icon{
+                font-size: 2.5rem;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            h3{
+                font-size: 1.3rem;
+                margin-bottom: 0.6rem;
+                color: #F05A29;
+            }
+
+            p{
+                color: #555;
+                line-height: 1.6;
+            }
+        }
+    }
+}
+
+
+/* ========== Contact Styles ========== */
+
+.contact{
+    padding: 5rem 8%;
+    background: #f0f4f8;
+
+    h2{
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .contact-form{
+        max-width: 500px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+
+        label{
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        textarea{
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+
+            &:focus{
+                border-color: #e86b42db;
+            }
+        }
+
+        .btn-primary{
+            width: 100%;
+            background: #F05A29;
+            color: #fff;
+            border: 1px solid #F05A29;
+
+            &:hover{
+                background: #fff;
+                border: 1px solid #F05A29;
+                color: #F05A29;
+            }
+        }
+    }
+}
+
+
+/* ========== Footer Styles ========== */
+
+footer{
+    background: #1a1a2e;
+    color: #ccc;
+    padding: 3rem 8% 1.5rem;
+
+    .footer-grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 2rem;
+
+        .footer-col{
+
+            h3{
+                color: #F05A29;
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+
+            p{
+                line-height: 1.6;
+            }
+
+            a{
+                display: block;
+                color: #aaa;
+                margin-bottom: 0.5rem;
+                transition: color 0.3s;
+
+                &:hover{
+                    color: #63B3ED;
+                }
+            }
+        }
+    }
+
+    .copyright{
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid #333;
+        font-size: 0.9rem;
+        color: #F05A29;
+    }
+}
+
+
+/* ========== Responsive - Tablet ========== */
+
+@media (max-width: 768px){
+
+    .hero .hero-content h1{
+        font-size: 2.2rem;
+    }
+
+    .features .feature-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer .footer-grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* ========== Responsive - Mobile ========== */
+
+@media (max-width: 480px){
+
+    .navbar{
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem 5%;
+
+        .nav-links{
+            gap: 1.2rem;
+        }
+    }
+
+    .hero{
+        padding: 3rem 5%;
+
+        .hero-content{
+
+            h1{
+                font-size: 1.8rem;
+            }
+
+            .hero-buttons{
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+
+    .features{
+        padding: 3rem 5%;
+
+        .feature-grid{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .contact{
+        padding: 3rem 5%;
+    }
+
+    footer{
+        padding: 2rem 5% 1rem;
+
+        .footer-grid{
+            grid-template-columns: 1fr;
+        }
+    }
+}

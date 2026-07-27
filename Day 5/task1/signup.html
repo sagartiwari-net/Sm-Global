@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflix: '#E50914',
+            'netflix-black': '#141414',
+            'netflix-gray': '#737373',
+            'netflix-light': '#b3b3b3',
+            'netflix-border': '#808080',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="min-h-screen bg-white text-black font-sans">
+
+  <!-- Header -->
+  <header class="border-b border-gray-200 px-4 sm:px-8 lg:px-16 py-5 flex items-center justify-between">
+    <a href="index.html">
+      <img src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAUkLCBtHBbguPPqzaFOzEv4Pw_eS79j0y7ADR4hkB30-HkahpsUb5yvfzgKsfU2oNda-7hpkfYLnXhjc23JVT07PHsGgfsaHAB7qOhy2_5gn-nuKOVSUSBzn-i-O3ea2QQaXx3PYkHes.svg"
+           alt="Netflix" class="h-8 w-auto">
+    </a>
+    <a href="login.html" class="text-black font-medium hover:underline text-sm sm:text-base">Sign In</a>
+  </header>
+
+  <!-- Progress Steps -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
+    <!-- Step 1: Create password -->
+    <div id="step1">
+      <p class="text-xs sm:text-sm uppercase tracking-wider text-netflix-gray mb-2">Step <span id="stepNum">1</span> of 3</p>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Create a password to start your membership</h1>
+
+      <div id="errorMsg" class="hidden mb-4 p-3 bg-orange-100 border border-orange-400 rounded text-sm text-orange-800"></div>
+
+      <form id="signupForm" class="space-y-4 max-w-md">
+        <input type="email" id="email" required placeholder="Email address"
+               class="w-full border border-gray-400 rounded px-4 py-4 text-base focus:outline-none focus:border-black focus:ring-1 focus:ring-black">
+        <input type="password" id="password" required minlength="4" placeholder="Add a password"
+               class="w-full border border-gray-400 rounded px-4 py-4 text-base focus:outline-none focus:border-black focus:ring-1 focus:ring-black">
+        <label class="flex items-start gap-3 text-sm text-netflix-gray cursor-pointer">
+          <input type="checkbox" required class="mt-1 accent-netflix">
+          <span>Please do not email me Netflix special offers.</span>
+        </label>
+        <button type="submit"
+                class="w-full bg-netflix hover:bg-red-700 text-white text-lg font-semibold py-3.5 rounded transition-colors mt-4">
+          Next
+        </button>
+      </form>
+    </div>
+
+    <!-- Step 2: Choose plan -->
+    <div id="step2" class="hidden">
+      <p class="text-xs sm:text-sm uppercase tracking-wider text-netflix-gray mb-2">Step 2 of 3</p>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Choose the plan that's right for you</h1>
+      <p class="text-netflix-gray mb-8">Downgrade or upgrade at any time</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <label class="plan-card border-2 border-netflix rounded-lg p-4 cursor-pointer bg-red-50 relative">
+          <input type="radio" name="plan" value="mobile" class="sr-only" checked>
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-netflix text-white text-xs px-3 py-0.5 rounded-full">Most Popular</span>
+          <p class="text-netflix font-semibold text-sm mb-1">Mobile</p>
+          <p class="text-2xl font-bold mb-2">₹149<span class="text-sm font-normal text-netflix-gray">/mo</span></p>
+          <ul class="text-xs text-netflix-gray space-y-1">
+            <li>480p video quality</li>
+            <li>1 phone or tablet</li>
+          </ul>
+        </label>
+        <label class="plan-card border-2 border-gray-300 rounded-lg p-4 cursor-pointer hover:border-gray-500 transition-colors">
+          <input type="radio" name="plan" value="basic" class="sr-only">
+          <p class="font-semibold text-sm mb-1">Basic</p>
+          <p class="text-2xl font-bold mb-2">₹199<span class="text-sm font-normal text-netflix-gray">/mo</span></p>
+          <ul class="text-xs text-netflix-gray space-y-1">
+            <li>720p video quality</li>
+            <li>1 phone, tablet, laptop or TV</li>
+          </ul>
+        </label>
+        <label class="plan-card border-2 border-gray-300 rounded-lg p-4 cursor-pointer hover:border-gray-500 transition-colors">
+          <input type="radio" name="plan" value="premium" class="sr-only">
+          <p class="font-semibold text-sm mb-1">Premium</p>
+          <p class="text-2xl font-bold mb-2">₹649<span class="text-sm font-normal text-netflix-gray">/mo</span></p>
+          <ul class="text-xs text-netflix-gray space-y-1">
+            <li>4K + HDR video quality</li>
+            <li>4 phones, tablets, laptops or TVs</li>
+          </ul>
+        </label>
+      </div>
+      <button id="planNextBtn" type="button"
+              class="w-full max-w-md bg-netflix hover:bg-red-700 text-white text-lg font-semibold py-3.5 rounded transition-colors">
+        Next
+      </button>
+    </div>
+
+    <!-- Step 3: Payment (simplified) -->
+    <div id="step3" class="hidden">
+      <p class="text-xs sm:text-sm uppercase tracking-wider text-netflix-gray mb-2">Step 3 of 3</p>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Set up your payment</h1>
+      <p class="text-netflix-gray mb-6">Your membership starts as soon as you set up payment. No commitments, cancel anytime.</p>
+
+      <div class="border border-gray-300 rounded-lg p-4 mb-6 max-w-md">
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="radio" name="payment" checked class="accent-netflix">
+          <div>
+            <p class="font-semibold">UPI / Credit or Debit Card</p>
+            <p class="text-sm text-netflix-gray">Secure payment</p>
+          </div>
+        </label>
+      </div>
+
+      <button id="finishBtn" type="button"
+              class="w-full max-w-md bg-netflix hover:bg-red-700 text-white text-lg font-semibold py-3.5 rounded transition-colors">
+        Start Membership
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 px-4 sm:px-8 lg:px-16 py-8 text-netflix-gray text-sm mt-auto">
+    <p class="mb-6">Questions? Call <a href="tel:000-800-919-1743" class="hover:underline">000-800-919-1743 (Toll-Free)</a></p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-3 gap-x-4 text-xs mb-6">
+      <a href="#" class="hover:underline">FAQ</a>
+      <a href="#" class="hover:underline">Help Centre</a>
+      <a href="#" class="hover:underline">Terms of Use</a>
+      <a href="#" class="hover:underline">Privacy</a>
+    </div>
+    <select class="border border-gray-400 rounded px-4 py-2 text-sm bg-white">
+      <option>English</option>
+      <option>हिन्दी</option>
+    </select>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const emailInput = document.getElementById('email');
+    if (params.get('email')) emailInput.value = params.get('email');
+
+    let signupEmail = '';
+    let signupPassword = '';
+
+    // Plan card selection styling
+    document.querySelectorAll('.plan-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.plan-card').forEach((c) => {
+          c.classList.remove('border-netflix', 'bg-red-50');
+          c.classList.add('border-gray-300');
+        });
+        card.classList.add('border-netflix', 'bg-red-50');
+        card.classList.remove('border-gray-300');
+        card.querySelector('input').checked = true;
+      });
+    });
+
+    function showStep(n) {
+      document.getElementById('step1').classList.toggle('hidden', n !== 1);
+      document.getElementById('step2').classList.toggle('hidden', n !== 2);
+      document.getElementById('step3').classList.toggle('hidden', n !== 3);
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      signupEmail = emailInput.value.trim();
+      signupPassword = document.getElementById('password').value;
+      const errorEl = document.getElementById('errorMsg');
+
+      NetflixAuth.clearSession();
+      const result = NetflixAuth.register(signupEmail, signupPassword);
+      if (!result.ok) {
+        errorEl.textContent = result.message + ' Please sign in instead.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+      errorEl.classList.add('hidden');
+      showStep(2);
+    });
+
+    document.getElementById('planNextBtn').addEventListener('click', () => showStep(3));
+
+    document.getElementById('finishBtn').addEventListener('click', () => {
+      window.location.href = 'profiles.html';
+    });
+  </script>
+</body>
+</html>

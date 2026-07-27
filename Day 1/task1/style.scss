@@ -1,0 +1,289 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    width: 100%;
+    height: 100%;
+    font-family: "Helvetica Neue", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #fff;
+    color: #222;
+}
+
+.hero{
+
+    min-height: 100vh;
+    background: #FEF0E9;
+    padding: 5rem 8%;
+
+    .hero-content{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+
+        .hero-text{
+
+            flex: 1;
+
+            .hello{
+                color: #F05A29;
+                font-size: 1.1rem;
+            }
+
+            h1{
+                font-size: 4rem;
+                margin-top: .5rem;
+            }
+
+            h2{
+                color: #555;
+                margin: 1rem 0;
+            }
+
+            p{
+                max-width: 500px;
+                line-height: 1.8;
+            }
+
+            .btn{
+
+                display: inline-block;
+                margin-top: 2rem;
+                padding: 15px 35px;
+                border-radius: 50px;
+                background: #F05A29;
+                color: white;
+                text-decoration: none;
+                transition: .3s;
+
+                &:hover{
+
+                    transform: translateY(-5px);
+                    background: #d94b1d;
+
+                }
+
+            }
+
+        }
+
+        .hero-image{
+
+            flex: 1;
+            display: flex;
+            justify-content: center;
+
+            img{
+
+                width: 420px;
+                border-radius: 25px;
+                transition: .4s;
+
+                &:hover{
+
+                    transform: scale(1.05) rotate(-2deg);
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+
+.about-section{
+
+    padding: 6rem 8%;
+    display: flex;
+    gap: 5rem;
+
+    .about{
+
+        flex: 2;
+
+        h2{
+
+            font-size: 3rem;
+
+            &::after{
+
+                content: "";
+                display: block;
+                width: 70px;
+                height: 4px;
+                background: #F05A29;
+                margin-top: 10px;
+
+            }
+
+        }
+
+        p{
+
+            margin-top: 1.5rem;
+            line-height: 1.9;
+
+        }
+
+    }
+
+    .skills{
+
+        flex: 1;
+
+        h2{
+            font-size: 3rem;
+        }
+
+        .skill-box{
+
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            background: #F05A29;
+            color: white;
+            text-align: center;
+            transition: .3s;
+
+            &:hover{
+
+                transform: translateX(10px);
+
+            }
+
+        }
+
+    }
+
+}
+
+
+
+footer{
+
+    width: 100%;
+    background: #111;
+    color: white;
+
+    padding: 1.5rem 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    p{
+        font-size: 1rem;
+    }
+
+    .social{
+
+        display: flex;
+        gap: 1.5rem;
+
+        a{
+
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: .3s;
+
+            &:hover{
+
+                color: #F05A29;
+
+            }
+
+        }
+
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .hero{
+
+        .hero-content{
+
+            flex-direction: column-reverse;
+            text-align: center;
+
+            .hero-text{
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                h1{
+                    font-size: 3rem;
+                }
+
+            }
+
+            .hero-image{
+
+                img{
+                    width: 280px;
+                }
+
+            }
+
+        }
+
+    }
+
+    .about-section{
+
+        flex-direction: column;
+
+        .skills{
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h2{
+                align-self: flex-start;
+            }
+
+            .skill-box{
+                width: 100%;
+                max-width: 300px;
+            }
+
+        }
+
+    }
+
+
+    footer{
+
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+
+        .social{
+
+            justify-content: center;
+
+        }
+
+    }
+
+}

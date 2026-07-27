@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Watch Netflix movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.">
+  <title>Netflix India – Watch TV Shows Online, Watch Movies Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflix: '#E50914',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="text-white font-sans antialiased">
+
+  <!-- Free trial banner -->
+  <button type="button" data-i18n-aria="promoAria" aria-label="New to Netflix? Try 14 days for ₹0." class="promo-banner">
+    <div class="promo-banner-inner">
+      <span class="promo-gift-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+          <path fill="currentColor" fill-rule="evenodd" d="M8.39 1A3.4 3.4 0 0 0 5 4.39v.11q0 .82.34 1.5H4a2 2 0 0 0-2 2v2a2 2 0 0 0 1 1.73V20c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-8.27A2 2 0 0 0 22 10V8a2 2 0 0 0-2-2h-1.34q.33-.68.34-1.5v-.11a3.39 3.39 0 0 0-6.53-1.26L12 4.3l-.47-1.18A3.4 3.4 0 0 0 8.39 1M12 8h8v2H4V8zm5-3.5c0 .83-.67 1.5-1.5 1.5h-2.02l.85-2.13A1.39 1.39 0 0 1 17 4.4zM10.52 6l-.85-2.13A1.39 1.39 0 0 0 7 4.4v.11C7 5.33 7.67 6 8.5 6zM5 20v-8h6v8zm8 0h6v-8h-6z" clip-rule="evenodd"></path>
+        </svg>
+      </span>
+      <p data-i18n="promoBanner">New to Netflix? Try 14 days for ₹0.</p>
+    </div>
+  </button>
+
+  <!-- Header -->
+  <header class="absolute top-[2.75rem] sm:top-11 left-0 right-0 z-50">
+    <nav class="section-wrap flex items-center justify-between py-4 lg:py-5 !px-4 sm:!px-8 lg:!px-16">
+      <a href="index.html" class="flex items-center gap-1 flex-shrink-0" aria-label="Netflix">
+        <svg class="n-logo-svg" focusable="false" viewBox="225 0 552 1000" aria-hidden="true">
+          <defs>
+            <radialGradient id="n-logo-grad" r="75%" gradientTransform="matrix(.38 0 .5785 1 .02 0)">
+              <stop offset="60%" stop-opacity=".3"></stop>
+              <stop offset="90%" stop-opacity=".05"></stop>
+              <stop offset="100%" stop-opacity="0"></stop>
+            </radialGradient>
+          </defs>
+          <path d="M225 0v1000c60-8 138-14 198-17V0H225" fill="#b1060e"></path>
+          <path d="M579 0v983c71 3 131 9 198 17V0H579" fill="#b1060e"></path>
+          <path d="M225 0v200l198 600V557l151 426c76 3 136 9 203 17V800L579 200v240L423 0H225" fill="url(#n-logo-grad)"></path>
+          <path d="M225 0l349 983c76 3 136 9 203 17L423 0H225" fill="#e50914"></path>
+        </svg>
+        <img src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAUkLCBtHBbguPPqzaFOzEv4Pw_eS79j0y7ADR4hkB30-HkahpsUb5yvfzgKsfU2oNda-7hpkfYLnXhjc23JVT07PHsGgfsaHAB7qOhy2_5gn-nuKOVSUSBzn-i-O3ea2QQaXx3PYkHes.svg"
+             alt="" aria-hidden="true" class="h-6 sm:h-7 lg:h-8 w-auto">
+      </a>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <label class="sr-only" for="headerLang" data-i18n="selectLang">Select Language</label>
+        <div class="lang-select-wrap">
+          <svg class="lang-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+          </svg>
+          <select id="headerLang" name="LanguageSelect">
+            <option lang="en" value="en-IN">English</option>
+            <option lang="hi" value="hi-IN">हिन्दी</option>
+          </select>
+          <svg class="lang-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <a href="login.html" id="signInBtn" data-i18n="signIn"
+           class="bg-netflix hover:bg-[#c11119] text-white text-sm sm:text-base font-semibold px-3 sm:px-6 py-1.5 sm:py-2 rounded transition-colors">
+          Sign In
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://assets.nflxext.com/ffe/siteui/vlv3/ffa9d590-69c5-406f-bff9-e2ced3baa6ad/web/IN-en-20260713-TRIFECTA-perspective_75c0557e-9bbb-4149-9913-b87d4d7a30b7_large.jpg"
+           srcset="https://assets.nflxext.com/ffe/siteui/vlv3/ffa9d590-69c5-406f-bff9-e2ced3baa6ad/web/IN-en-20260713-TRIFECTA-perspective_75c0557e-9bbb-4149-9913-b87d4d7a30b7_large.jpg 2000w, https://assets.nflxext.com/ffe/siteui/vlv3/ffa9d590-69c5-406f-bff9-e2ced3baa6ad/web/IN-en-20260713-TRIFECTA-perspective_75c0557e-9bbb-4149-9913-b87d4d7a30b7_medium.jpg 1279w, https://assets.nflxext.com/ffe/siteui/vlv3/ffa9d590-69c5-406f-bff9-e2ced3baa6ad/web/IN-en-20260713-TRIFECTA-perspective_75c0557e-9bbb-4149-9913-b87d4d7a30b7_small.jpg 959w"
+           alt="" aria-hidden="true" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 hero-gradient"></div>
+    </div>
+    <div class="hero-curve-wrap" aria-hidden="true">
+      <div class="hero-curve"></div>
+    </div>
+
+    <div class="relative z-10 text-center section-wrap pt-28 sm:pt-32 lg:pt-36 pb-24 max-w-4xl">
+      <h1 data-i18n="heroTitle" class="text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.1] mb-3 sm:mb-4 tracking-tight">
+        Unlimited movies, shows, and more
+      </h1>
+      <p data-i18n="heroSub" class="text-lg sm:text-xl md:text-2xl font-normal mb-6 sm:mb-8">Plans start at ₹149. Cancel anytime.</p>
+
+      <form id="heroEmailForm" class="email-form-block" aria-label="Sign up or restart your membership with Netflix." method="post">
+        <h3 class="email-form-title" data-i18n="emailTitle">Ready to watch? Enter your email to start your membership.</h3>
+        <div class="email-form-row">
+          <div class="email-field">
+            <input type="email" id="heroEmail" name="email" required minlength="5" maxlength="50" autocomplete="email" placeholder=" " data-i18n-label="emailLabel">
+            <label for="heroEmail">Email address</label>
+          </div>
+          <button type="submit" class="email-submit">
+            <span data-i18n="emailSubmit">Try 14 Days for ₹0</span>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd" d="m15.586 12-7.293 7.293 1.414 1.414 8-8a1 1 0 0 0 0-1.414l-8-8-1.414 1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+      <p data-i18n="emailNote" class="text-sm text-[#737373] mt-3">New members only. Terms below.</p>
+    </div>
+  </section>
+
+  <!-- Trending Now -->
+  <section class="relative z-10 bg-black pt-2 pb-10 sm:pb-14">
+    <div class="section-wrap">
+      <h2 class="section-title" data-i18n="trending">Trending Now</h2>
+    </div>
+    <div class="trending-scroll-wrap">
+      <button type="button" id="trendScrollRight" aria-label="Next" class="trending-nav-btn">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true">
+          <path fill="currentColor" fill-rule="evenodd" d="m15.586 12-7.293 7.293 1.414 1.414 8-8a1 1 0 0 0 0-1.414l-8-8-1.414 1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <ul id="trendingList" class="top10-list scrollbar-hide section-wrap !px-4 sm:!px-8 lg:!px-16"></ul>
+    </div>
+  </section>
+
+  <!-- More reasons to join -->
+  <section class="py-10 sm:py-14 bg-black">
+    <div class="section-wrap">
+      <h2 class="section-title mb-6 sm:mb-8" data-i18n="reasonsTitle">More reasons to join</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <article class="reason-card">
+          <h3 data-i18n="reason1Title">Enjoy on your TV</h3>
+          <p data-i18n="reason1Desc">Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
+          <img src="assets/icons/tv.svg" alt="" class="reason-card-icon" aria-hidden="true">
+        </article>
+        <article class="reason-card">
+          <h3 data-i18n="reason2Title">Download your shows to watch offline</h3>
+          <p data-i18n="reason2Desc">Save your favourites easily and always have something to watch.</p>
+          <img src="assets/icons/download.svg" alt="" class="reason-card-icon" aria-hidden="true">
+        </article>
+        <article class="reason-card">
+          <h3 data-i18n="reason3Title">Watch everywhere</h3>
+          <p data-i18n="reason3Desc">Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+          <img src="assets/icons/telescope.svg" alt="" class="reason-card-icon" aria-hidden="true">
+        </article>
+        <article class="reason-card">
+          <h3 data-i18n="reason4Title">Create profiles for kids</h3>
+          <p data-i18n="reason4Desc">Send kids on adventures with their favourite characters in a space made just for them — free with your membership.</p>
+          <img src="assets/icons/profiles.svg" alt="" class="reason-card-icon" aria-hidden="true">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-10 sm:py-14 bg-black">
+    <div class="section-wrap max-w-4xl">
+      <h2 class="section-title text-center mb-4 sm:mb-6" data-i18n="faqTitle">Frequently Asked Questions</h2>
+      <ul id="faqAccordion" class="faq-list">
+        <li>
+          <h3 class="m-0">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq1Q">What is Netflix?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" role="region" data-i18n="faq1A" data-i18n-html>
+            Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices.<br><br>
+            You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!
+          </div>
+        </li>
+        <li>
+          <h3 class="m-0">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq2Q">How much does Netflix cost?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" role="region" data-i18n="faq2A" data-i18n-html>
+            New members can try 14 days of Netflix for ₹0. After the free trial ends, your plan will automatically renew at the regular price depending on the plan you select. Plans range from ₹149 to ₹649.<br><br>
+            Watch Netflix on your smartphone, tablet, Smart TV, laptop or streaming device. No extra costs, cancel at anytime.
+          </div>
+        </li>
+        <li>
+          <h3 class="m-0">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq3Q">Where can I watch?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" role="region" data-i18n="faq3A" data-i18n-html>
+            Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.<br><br>
+            You can also download your favourite shows with the iOS or Android app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.
+          </div>
+        </li>
+        <li>
+          <h3 class="m-0">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq4Q">How do I cancel?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" role="region" data-i18n="faq4A" data-i18n-html>
+            Netflix is flexible. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.
+          </div>
+        </li>
+        <li>
+          <h3 class="m-0">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq5Q">What can I watch on Netflix?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" role="region" data-i18n="faq5A" data-i18n-html>
+            Netflix has an extensive library of feature films, documentaries, shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.
+          </div>
+        </li>
+        <li>
+          <h3 class="m-0">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq6Q">Is Netflix good for kids?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" role="region" data-i18n="faq6A" data-i18n-html>
+            The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and films in their own space.<br><br>
+            Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don't want kids to see.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer signup -->
+  <section class="py-10 sm:py-14 bg-black text-center">
+    <div class="section-wrap max-w-4xl">
+      <form id="bottomEmailForm" class="email-form-block" aria-label="Sign up or restart your membership with Netflix." method="post">
+        <h3 class="email-form-title" data-i18n="emailTitle">Ready to watch? Enter your email to start your membership.</h3>
+        <div class="email-form-row">
+          <div class="email-field">
+            <input type="email" id="bottomEmail" name="email" required minlength="5" maxlength="50" autocomplete="email" placeholder=" " data-i18n-label="emailLabel">
+            <label for="bottomEmail">Email address</label>
+          </div>
+          <button type="submit" class="email-submit">
+            <span data-i18n="emailSubmit">Try 14 Days for ₹0</span>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd" d="m15.586 12-7.293 7.293 1.414 1.414 8-8a1 1 0 0 0 0-1.414l-8-8-1.414 1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+      <p class="footer-disclaimer" data-i18n="disclaimer">
+        This offer is only valid for new members. This offer is non-transferrable. You agree that Netflix will charge the membership fee at the end of the free trial to your payment method and will automatically continue your membership until you cancel. Some methods of payment may not be eligible to redeem this offer.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 sm:py-14 border-t border-[#737373]/20 text-[#737373] bg-black">
+    <div class="section-wrap">
+      <p class="mb-6 text-sm sm:text-base"><span data-i18n="questionsCall">Questions? Call</span> <a href="tel:000-800-919-1743" class="hover:underline text-[#737373]">000-800-919-1743</a></p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-3 gap-x-4 text-xs sm:text-sm mb-8">
+        <a href="https://help.netflix.com/support/412" class="hover:underline" data-i18n="footerFaq">FAQ</a>
+        <a href="https://help.netflix.com" class="hover:underline" data-i18n="footerHelp">Help Centre</a>
+        <a href="#" class="hover:underline" data-i18n="footerAccount">Account</a>
+        <a href="https://media.netflix.com/" class="hover:underline" data-i18n="footerMedia">Media Centre</a>
+        <a href="http://ir.netflix.com/" class="hover:underline" data-i18n="footerInvestor">Investor Relations</a>
+        <a href="https://jobs.netflix.com/jobs" class="hover:underline" data-i18n="footerJobs">Jobs</a>
+        <a href="#" class="hover:underline" data-i18n="footerWays">Ways to Watch</a>
+        <a href="https://help.netflix.com/legal/termsofuse" class="hover:underline" data-i18n="footerTerms">Terms of Use</a>
+        <a href="https://help.netflix.com/legal/privacy" class="hover:underline" data-i18n="footerPrivacy">Privacy</a>
+        <a href="#" class="hover:underline" data-i18n="footerCookie">Cookie Preferences</a>
+        <a href="https://help.netflix.com/legal/corpinfo" class="hover:underline" data-i18n="footerCorp">Corporate Information</a>
+        <a href="https://help.netflix.com/contactus" class="hover:underline" data-i18n="footerContact">Contact Us</a>
+        <a href="https://fast.com" class="hover:underline" data-i18n="footerSpeed">Speed Test</a>
+        <a href="https://help.netflix.com/legal/notices" class="hover:underline" data-i18n="footerLegal">Legal Notices</a>
+        <a href="https://www.netflix.com/in/browse/genre/839338" class="hover:underline" data-i18n="footerOnly">Only on Netflix</a>
+      </div>
+      <div class="relative inline-block mb-4">
+        <label class="sr-only" for="footerLang" data-i18n="selectLang">Select Language</label>
+        <svg class="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+        </svg>
+        <select id="footerLang" name="LanguageSelect" class="footer-lang-select">
+          <option lang="en" value="en-IN">English</option>
+          <option lang="hi" value="hi-IN">हिन्दी</option>
+        </select>
+        <svg class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <p class="text-xs sm:text-sm" data-i18n="footerRegion">Netflix India</p>
+      <p class="text-xs text-[#737373]/80 mt-6 max-w-3xl" data-i18n="footerRecaptcha">This page is protected by Google reCAPTCHA to ensure you're not a bot.</p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script>
+    const TRENDING = [
+      { num: 1, title: 'Lock Upp', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABfyqIlFZEKVpZg2BIum8uvOk2cx17PiJ3OmxPmdOzA-As1rWN2G9GFJxEbBX1qntpbIdLW13bTNnyg1LX1QHQuNgmUDsSyHENYk8tMktae6BxkDMUejWwv-eaR1h2G-luEBr.webp?r=6f7' },
+      { num: 2, title: 'Ikka', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABWQnjEgoKoL20AK_MX_UXqWOqwvyE2a7W5yThmnL5CWSUMm6-YTio7Kh-mYcxjprRrLQcGzfm5KgRzXmJbz8kCmYXDlkq4d_YrH8kCGGS3b6RA3T7F65C1146Yuk4Vn7ziWj.webp?r=6b0' },
+      { num: 3, title: 'Peddi', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABRHEcpZrJWcGzHq1AkgW7B8aDNiXEqlU9JBHEwHiXFTEQ8fXNl14SJJMQJYMweSLASaAFxBjCZUrsnZ2DCoViO0dcfgJvky0pYY.webp?r=d8e' },
+      { num: 4, title: 'Bhooth Bangla', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABV634RJ705XipxQXbUOmWTlPM6NMLGOMgv8O6-1mpxjUiHuGTO8aU_smM_58vn7E3eNAHVvWJq0PdI-Nfb186hH-lCfPKhOAdpg.webp?r=92a' },
+      { num: 5, title: 'Blast', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABdCNdKR9dgupDlDI12eOrjd3d1uHJXGw537qUxGjCrEHiyDqJ5OIPTEP107q4e-qLJERuWreYp5bF7t5BxNEI7SfZhIY3p_Sp4w.webp?r=434' },
+      { num: 6, title: 'Teach You a Lesson', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABY63h-h1Gon9p3n_dSWmou2ZyN__EntViMFXWrNen_vEcZGZ7-_P9_z-hxdiUdzgbN83VIT29Y9tL6qEg5MJryhB2k6k1kxsyeFMlH5GvvBIqaqk_qc8LS0XezttgoZGS2hX.webp?r=58c' },
+      { num: 7, title: 'Avatar: The Last Airbender', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABYMJOpwnAZIoMUgOROfg4f5HaS2Rs-vsp9ue-oVi_GpL52CBKfYbmqe7miOu8l3BDGv-6_r-5SsZUrBb4vPxDuKNnZotR0Un3O4Kyxh5fgqD2BnjYtqM4mKoepuEZeZrYfF5.webp?r=627' },
+      { num: 8, title: 'Pati Patni Aur Woh Do', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABYTBfXXZ1fEcttSOA8Yp2HO-dRkow1DaudJcCQlR6RJan9ubdgm71Dklk0fJmQ8j5hMSTkegFQG_l7_NM8PhBLbR8prPoakJlK0.webp?r=bf6' },
+      { num: 9, title: 'Dhurandhar The Revenge (Raw & Undekha)', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABdu2BTLzDZapIFx3LR83EP5CFJAEcfDaaAhGnIUoz9tEn-xy2K1XjaBe0Wfz0zQB8wWEI17kf-RcCKeqLsV7TsR6oZKZYjqlw34.webp?r=79f' },
+      { num: 10, title: 'Maa Behen', poster: 'https://occ-0-4610-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABaBljvFdAV1SGGPNXCcLpojtQjNb4MKKevyP-yHCBfzIW1zsZ-8lMn0-MwNMua8X5VZ0yjjzrfAZ4QFqxDdAIcVxsnTAtj2JNIUSZt5IEgJ15eSk4YSmd0XZk0PBW_XNHsbL.webp?r=1c2' },
+    ];
+
+    const trendingList = document.getElementById('trendingList');
+    trendingList.innerHTML = TRENDING.map((item) => `
+      <li class="top10-item">
+        <button type="button" aria-label="${item.title}" class="top10-btn">
+          <span class="top10-number-wrap" aria-hidden="true">
+            <span class="top10-number-fill">${item.num}</span>
+            <span class="top10-number-stroke">${item.num}</span>
+          </span>
+          <span class="top10-poster" style="background-image:url('${item.poster}')"></span>
+        </button>
+      </li>
+    `).join('');
+
+    document.getElementById('trendScrollRight')?.addEventListener('click', () => {
+      trendingList.scrollBy({ left: 500, behavior: 'smooth' });
+    });
+
+    document.querySelectorAll('#faqAccordion .faq-question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const li = btn.closest('li');
+        const isOpen = li.classList.contains('open');
+        document.querySelectorAll('#faqAccordion li.open').forEach((openLi) => {
+          openLi.classList.remove('open');
+          openLi.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          li.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    function goToSignup(email) {
+      window.location.href = 'signup.html?email=' + encodeURIComponent(email);
+    }
+    document.getElementById('heroEmailForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      goToSignup(document.getElementById('heroEmail').value.trim());
+    });
+    document.getElementById('bottomEmailForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      goToSignup(document.getElementById('bottomEmail').value.trim());
+    });
+  </script>
+</body>
+</html>

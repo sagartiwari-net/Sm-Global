@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflix: '#E50914',
+            'netflix-black': '#141414',
+            'netflix-gray': '#737373',
+            'netflix-light': '#b3b3b3',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="min-h-screen bg-netflix-black text-white font-sans flex flex-col">
+
+  <!-- Header -->
+  <header class="px-4 sm:px-8 lg:px-16 py-5 flex items-center justify-between">
+    <a href="index.html">
+      <img src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAUkLCBtHBbguPPqzaFOzEv4Pw_eS79j0y7ADR4hkB30-HkahpsUb5yvfzgKsfU2oNda-7hpkfYLnXhjc23JVT07PHsGgfsaHAB7qOhy2_5gn-nuKOVSUSBzn-i-O3ea2QQaXx3PYkHes.svg"
+           alt="Netflix" class="h-8 sm:h-10 w-auto">
+    </a>
+    <a href="login.html" id="signOutLink" class="text-white hover:underline text-sm sm:text-base font-medium">Sign Out</a>
+  </header>
+
+  <!-- Profiles -->
+  <main class="flex-1 flex flex-col items-center justify-center px-4 py-8 sm:py-12">
+    <h1 class="text-2xl sm:text-3xl md:text-5xl font-normal mb-8 sm:mb-12 text-center">Who's watching?</h1>
+
+    <div id="profilesGrid" class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
+      <!-- Profiles rendered by JS -->
+    </div>
+
+    <button id="manageBtn" type="button"
+            class="border border-netflix-gray text-netflix-gray hover:border-white hover:text-white px-6 py-2 text-sm sm:text-base tracking-widest uppercase transition-colors">
+      Manage Profiles
+    </button>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    if (!NetflixAuth.requireAuth('login.html')) throw new Error('redirect');
+
+    const user = NetflixAuth.getCurrentUser();
+    const grid = document.getElementById('profilesGrid');
+    let manageMode = false;
+
+    const avatarIcons = {
+      red: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
+      blue: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
+      green: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
+      yellow: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
+      purple: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
+      orange: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
+    };
+
+    function renderProfiles() {
+      grid.innerHTML = '';
+      (user?.profiles || []).forEach((profile) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'flex flex-col items-center gap-2 sm:gap-3 cursor-pointer group';
+        wrapper.innerHTML = `
+          <div class="profile-avatar avatar-${profile.avatar} w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded flex items-center justify-center relative">
+            <svg class="w-16 h-16 sm:w-20 sm:h-20 text-white/90" fill="currentColor" viewBox="0 0 24 24">
+              <path d="${avatarIcons[profile.avatar] || avatarIcons.red}"/>
+            </svg>
+            ${manageMode ? '<span class="absolute inset-0 bg-black/50 flex items-center justify-center"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></span>' : ''}
+          </div>
+          <span class="text-netflix-light group-hover:text-white text-sm sm:text-base md:text-lg transition-colors">${profile.name}</span>
+        `;
+        wrapper.addEventListener('click', () => {
+          if (manageMode) return;
+          NetflixAuth.setSelectedProfile(profile);
+          window.location.href = 'browse.html';
+        });
+        grid.appendChild(wrapper);
+      });
+
+      // Add Profile button
+      const addBtn = document.createElement('div');
+      addBtn.className = 'flex flex-col items-center gap-2 sm:gap-3 cursor-pointer group';
+      addBtn.innerHTML = `
+        <div class="profile-avatar w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded bg-[#2f2f2f] flex items-center justify-center hover:bg-[#3f3f3f] transition-colors">
+          <svg class="w-12 h-12 sm:w-16 sm:h-16 text-netflix-gray group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"/>
+          </svg>
+        </div>
+        <span class="text-netflix-light group-hover:text-white text-sm sm:text-base md:text-lg transition-colors">Add Profile</span>
+      `;
+      grid.appendChild(addBtn);
+    }
+
+    renderProfiles();
+
+    document.getElementById('manageBtn').addEventListener('click', () => {
+      manageMode = !manageMode;
+      document.getElementById('manageBtn').textContent = manageMode ? 'Done' : 'Manage Profiles';
+      renderProfiles();
+    });
+
+    document.getElementById('signOutLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      NetflixAuth.logout();
+    });
+  </script>
+</body>
+</html>

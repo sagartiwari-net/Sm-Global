@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Insta-worthy spots",
+    "places": "99 Places",
+    "slug": "insta-worthy",
+    "image": "https://b.zmtcdn.com/data/collections/5cbe9bc87c9da2c6954772540d2e5db5_1730709895.png"
+  },
+  {
+    "title": "Omakase bars",
+    "places": "10 Places",
+    "slug": "omakase-bars",
+    "image": "https://b.zmtcdn.com/data/collections/29a1053b9dc17770c25e849df32b7a8f_1752236513.png"
+  },
+  {
+    "title": "Secret speakeasy bars",
+    "places": "24 Places",
+    "slug": "secret-speakeasy-bars",
+    "image": "https://b.zmtcdn.com/data/collections/b2875b8fc68fe8a39633259c0db491c7_1741170543.png"
+  },
+  {
+    "title": "Must visit cafes",
+    "places": "60 Places",
+    "slug": "great-cafes",
+    "image": "https://b.zmtcdn.com/data/collections/92bf1f87ad0a90b94007e79b13eb592c_1727266460.png"
+  },
+  {
+    "title": "Iconic restaurants",
+    "places": "54 Places",
+    "slug": "iconic-restaurants",
+    "image": "https://b.zmtcdn.com/data/collections/5188e2b754e6b8cfc7622bb94a798f55_1746185735.png"
+  },
+  {
+    "title": "Chef's Tasting Menus",
+    "places": "11 Places",
+    "slug": "chef-tasting-menu",
+    "image": "https://b.zmtcdn.com/data/collections/046e954e15a95a6eec29a6bf0c17175c_1732697144.png"
+  },
+  {
+    "title": "Fancy pizza finds",
+    "places": "40 Places",
+    "slug": "pizza-time",
+    "image": "https://b.zmtcdn.com/data/collections/68113c6bddb038ac936a1f63bcf5262e_1705558396.png"
+  }
+]

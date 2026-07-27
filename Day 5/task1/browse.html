@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Netflix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflix: '#E50914',
+            'netflix-black': '#141414',
+            'netflix-gray': '#737373',
+            'netflix-light': '#b3b3b3',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-black text-white font-sans antialiased overflow-x-hidden">
+
+  <!-- ============ TOP NAVBAR ============ -->
+  <nav id="browseNav" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-16 py-3 sm:py-4 transition-colors duration-300 bg-gradient-to-b from-black/80 to-transparent">
+    <div class="flex items-center gap-4 sm:gap-8">
+      <a href="browse.html" class="flex-shrink-0">
+        <img src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAUkLCBtHBbguPPqzaFOzEv4Pw_eS79j0y7ADR4hkB30-HkahpsUb5yvfzgKsfU2oNda-7hpkfYLnXhjc23JVT07PHsGgfsaHAB7qOhy2_5gn-nuKOVSUSBzn-i-O3ea2QQaXx3PYkHes.svg"
+             alt="Netflix" class="h-6 sm:h-8 w-auto">
+      </a>
+      <ul class="hidden md:flex items-center gap-4 lg:gap-5 text-sm">
+        <li><a href="browse.html" class="font-semibold text-white hover:text-netflix-light transition-colors">Home</a></li>
+        <li><a href="#" class="text-netflix-light hover:text-white transition-colors">TV Shows</a></li>
+        <li><a href="#" class="text-netflix-light hover:text-white transition-colors">Movies</a></li>
+        <li><a href="#" class="text-netflix-light hover:text-white transition-colors">New &amp; Popular</a></li>
+        <li><a href="#" class="text-netflix-light hover:text-white transition-colors">My List</a></li>
+        <li><a href="#" class="text-netflix-light hover:text-white transition-colors hidden lg:block">Browse by Languages</a></li>
+      </ul>
+    </div>
+
+    <div class="flex items-center gap-3 sm:gap-5">
+      <div class="flex items-center">
+        <div id="searchBox" class="hidden sm:flex items-center border border-white/0 focus-within:border-white/60 bg-black/40 rounded overflow-hidden transition-all mr-2">
+          <input type="search" placeholder="Titles, people, genres"
+                 class="bg-transparent px-3 py-1.5 text-sm w-0 focus:w-48 sm:focus:w-56 transition-all outline-none placeholder-netflix-gray">
+        </div>
+        <button id="searchBtn" type="button" aria-label="Search" class="hover:text-netflix-light transition-colors">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </button>
+      </div>
+
+      <a href="#" class="hidden sm:block text-sm hover:text-netflix-light transition-colors">Kids</a>
+
+      <button type="button" aria-label="Notifications" class="hover:text-netflix-light transition-colors relative">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+      </button>
+
+      <div class="relative">
+        <button id="profileBtn" type="button" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <div id="profileAvatar" class="w-7 h-7 sm:w-8 sm:h-8 rounded avatar-blue flex items-center justify-center">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <svg class="w-3 h-3 hidden sm:block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div id="profileMenu" class="hidden absolute right-0 mt-2 w-52 bg-black/95 border border-white/10 rounded shadow-2xl py-2 text-sm z-50">
+          <a href="#" class="block px-4 py-2 hover:underline"><span id="profileName">Profile</span></a>
+          <a href="#" class="block px-4 py-2 hover:underline">Account</a>
+          <a href="#" class="block px-4 py-2 hover:underline">Help Centre</a>
+          <hr class="border-white/10 my-2">
+          <a href="#" id="switchProfileBtn" class="block px-4 py-2 hover:underline">Switch Profiles</a>
+          <a href="#" id="signOutBtn" class="block px-4 py-2 hover:underline">Sign out of Netflix</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO BILLBOARD ============ -->
+  <section id="heroBillboard" class="browse-billboard-wrap" aria-label="Featured Content: Smallville">
+    <div class="browse-billboard-shell">
+      <div class="browse-billboard">
+        <div class="browse-billboard-media" aria-hidden="true">
+          <picture>
+            <source media="(min-width: 960px)"
+                    srcset="https://occ-0-4610-3647.1.nflxso.net/dnm/api/v6/x2x1Gn4QgTuVowyvC5vjsETMDK0/AAAABbLo3uYCc26NXfVeoLWbGQsRXOUPUoz_7YIbF0bEvG04DUBAoaFGAJsdyAwWVR9gmXPTrNTy9AJ-GJdynFjjjD9RZWRw-COus5D-umMBVLcIZ7pTW-UWcYSEaA.webp?r=99c">
+            <img id="heroBackdropImg"
+                 src="https://occ-0-4610-3647.1.nflxso.net/dnm/api/v6/a0rzcqaxbY-vbvJ_p52ifDlKBbg/AAAABc8vSr5_jkCHNyTRBypuHEkloBP7q-ZDyhUgzSuU6F4JxLyeQNa9L1CH41VKS1mrfae6mD_rfqsUdH4PmXcCGykaSJGfoB0nYceW.webp?r=9ab"
+                 alt=""
+                 class="browse-billboard-img">
+          </picture>
+          <video id="heroVideo" class="browse-billboard-video" muted loop playsinline preload="none"></video>
+          <div class="browse-hero-vignette"></div>
+        </div>
+
+        <button id="heroMuteBtn" type="button" aria-label="Volume Off" class="browse-volume-btn">
+          <svg id="heroMuteIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M7 3a.75.75 0 0 0-1.26-.55L3.04 5H.75a.75.75 0 0 0-.75.75v4.5c0 .41.34.75.75.75h2.29l2.7 2.55A.75.75 0 0 0 7 13V3zM5.7 9.7 7 8.42V11.6l-1.3-1.3-.22-.2H1.5v-4h3.41z"/></svg>
+        </button>
+
+        <div class="browse-billboard-info">
+          <img id="featuredTitleLogo"
+               src="https://occ-0-4610-3647.1.nflxso.net/dnm/api/v6/S4oi7EPZbv2UEPaukW54OORa0S8/AAAABRofPVL9IK_4eBg7FRHKKHV0qD1mnwtq9cNs7ebK6kGNFjjqX7LfTZqY1EVedi8xcolWfQyUCosPS4MfD52i7rN40DqG8yO0Jerw.webp?r=bb0"
+               alt="Smallville"
+               class="browse-title-logo">
+          <h1 id="featuredTitle" class="sr-only">Smallville</h1>
+
+          <div class="browse-meta">
+            <span id="featuredGenre">Drama</span>
+            <span aria-hidden="true">•</span>
+            <span id="featuredYear">2001</span>
+            <span aria-hidden="true">•</span>
+            <span id="featuredEpisodes">10 Seasons</span>
+            <span aria-hidden="true">•</span>
+            <span id="featuredRating" class="browse-rating-badge">U/A 16+</span>
+          </div>
+
+          <p id="featuredDesc" class="browse-synopsis">
+            First love. Teen angst. X-ray vision. In this series based on DC Comics' Superman, a young Clark Kent tries to understand his powers — and himself.
+          </p>
+
+          <div class="browse-actions">
+            <button type="button" aria-label="Play" class="browse-btn-play">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              Play
+            </button>
+            <button id="featuredMoreInfoBtn" type="button" aria-label="More Info" class="browse-btn-info">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              More Info
+            </button>
+          </div>
+        </div>
+
+        <div class="browse-quote-badge" aria-hidden="true">
+          <svg class="browse-quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7.17 6A5.001 5.001 0 0 0 2 11v7h7v-7H5.82A3 3 0 0 1 8.7 8.3L7.17 6zm11 0A5.001 5.001 0 0 0 13 11v7h7v-7h-3.18A3 3 0 0 1 19.7 8.3L18.17 6z"/></svg>
+          <span>“Surprisingly compelling and complex” — Los Angeles Times</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOVIE ROWS ============ -->
+  <main id="movieRows" class="browse-rows pb-12">
+    <!-- Rendered by browse.js -->
+  </main>
+
+  <!-- ============ TITLE DETAIL MODAL ============ -->
+  <div id="detailModal" class="detail-modal hidden" aria-hidden="true">
+    <div id="detailBackdrop" class="detail-modal-backdrop"></div>
+    <div class="detail-modal-panel" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+      <button id="detailCloseBtn" type="button" aria-label="Close" class="detail-close-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="detail-hero-wrap">
+        <img id="detailHeroImg" src="" alt="" class="detail-hero-img">
+        <video id="detailHeroVideo" class="detail-hero-video" muted loop playsinline preload="metadata"></video>
+        <div class="detail-hero-gradient"></div>
+        <button id="detailMuteBtn" type="button" aria-label="Volume Off" class="detail-mute-btn">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M7 3a.75.75 0 0 0-1.26-.55L3.04 5H.75a.75.75 0 0 0-.75.75v4.5c0 .41.34.75.75.75h2.29l2.7 2.55A.75.75 0 0 0 7 13V3z"/></svg>
+        </button>
+        <div class="detail-hero-content">
+          <img id="detailTitleLogo" src="" alt="" class="detail-title-logo hidden">
+          <h2 id="detailModalTitle" class="detail-title-text hidden"></h2>
+          <div class="detail-hero-actions">
+            <button type="button" class="detail-play-btn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              Play
+            </button>
+            <button type="button" aria-label="Add to My List" class="detail-icon-btn">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <button type="button" aria-label="Rate" class="detail-icon-btn">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-body">
+        <div class="detail-meta-grid">
+          <div class="detail-meta-left">
+            <div id="detailMetaRow" class="detail-meta-row"></div>
+            <p id="detailSynopsis" class="detail-synopsis"></p>
+          </div>
+          <div class="detail-meta-right">
+            <p><span class="detail-label">Cast:</span> <span id="detailCast"></span></p>
+            <p><span class="detail-label">Genres:</span> <span id="detailGenres"></span></p>
+            <p id="detailMoodRow"><span class="detail-label">This Show Is:</span> <span id="detailMood"></span></p>
+          </div>
+        </div>
+
+        <div class="detail-episodes">
+          <div class="detail-episodes-head">
+            <h3 class="detail-episodes-title">Episodes</h3>
+            <select id="detailSeasonSelect" class="detail-season-select" aria-label="Season"></select>
+          </div>
+          <ul id="detailEpisodeList" class="detail-episode-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/browse.js"></script>
+  <script>
+    const profile = NetflixAuth.getSelectedProfile();
+    if (profile) {
+      const avatar = document.getElementById('profileAvatar');
+      avatar.className = `w-7 h-7 sm:w-8 sm:h-8 rounded avatar-${profile.avatar} flex items-center justify-center`;
+    }
+  </script>
+</body>
+</html>

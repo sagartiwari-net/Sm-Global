@@ -1,0 +1,96 @@
+{
+  "ce-la-vie-kitchen-bar-connaught-place-new-delhi": {
+    "address": "H-11, Ground Floor, Connaught Circle, Block H, Connaught Place, New Delhi",
+    "timing": "12noon – 1am (Today)",
+    "openNow": true,
+    "phones": ["+919090272731", "+919711614102"],
+    "diningReviews": "10.4K",
+    "deliveryRating": "-",
+    "deliveryReviews": "0",
+    "costDetail": "₹3,300 for two people (approx.) Without alcohol",
+    "knownFor": "Great Food, Value for Money, Food Quality, Packaging",
+    "lat": 28.6354845416,
+    "lng": 77.2194425014,
+    "photos": [
+      "https://b.zmtcdn.com/data/pictures/3/20863533/f58f0e6de0aa01965ceda8dfd56752d0.jpeg?output-format=webp",
+      "https://b.zmtcdn.com/data/pictures/3/20863533/21f5b66c5432fdb3013595d826634612.jpg?output-format=webp",
+      "https://b.zmtcdn.com/data/pictures/3/20863533/b3d7d21e93d89ec7f70372a7dbd6ce8e.jpg?output-format=webp",
+      "https://b.zmtcdn.com/data/pictures/3/20863533/e5caaea0eb81c296cce2a50e42a42e76.jpg?output-format=webp"
+    ],
+    "offers": [
+      {
+        "heading": "PRE-BOOK OFFER",
+        "title": "Flat 35% OFF",
+        "subtitle": "Valid from 6PM to 11:55PM today\nBooking required",
+        "highlighted": true
+      },
+      {
+        "heading": "INSTANT OFFER",
+        "title": "Flat 20% OFF",
+        "subtitle": "on bill payments",
+        "highlighted": false
+      },
+      {
+        "heading": "SURPRISE",
+        "title": "Get a scratch card",
+        "subtitle": "after every transaction",
+        "highlighted": false
+      },
+      {
+        "heading": "EXCLUSIVE OFFER",
+        "title": "FLAT ₹250 OFF",
+        "subtitle": "valid on your next dining payment",
+        "highlighted": false
+      },
+      {
+        "heading": "BANK OFFER",
+        "title": "25% OFF for up to ₹5000 using RBL Bank LUMIÈRE Credit Card",
+        "subtitle": "and more with other banks",
+        "highlighted": false
+      }
+    ],
+    "highlights": [
+      "Lunch",
+      "Dinner",
+      "Takeaway available",
+      "Full bar available",
+      "DJ",
+      "Artistic",
+      "Parking available",
+      "Live entertainment",
+      "Nightlife",
+      "Live music",
+      "Romantic dining",
+      "Family friendly",
+      "Lounge seating",
+      "Free parking",
+      "Live sports screening",
+      "Indoor seating",
+      "Cocktails",
+      "Bar seating",
+      "Large group seating",
+      "Party vibe"
+    ],
+    "reviewHighlights": ["Great Food", "Value for Money", "Food Quality", "Packaging"],
+    "featuredCollections": [
+      {
+        "title": "Insta-worthy spots",
+        "places": "99 Places",
+        "slug": "insta-worthy",
+        "image": "https://b.zmtcdn.com/data/collections/5cbe9bc87c9da2c6954772540d2e5db5_1730709895.png"
+      },
+      {
+        "title": "Hot N' Spicy Dishes",
+        "places": "24 Places",
+        "slug": "great-cafes",
+        "image": "https://b.zmtcdn.com/data/collections/45110162c365cf30133653f0e0d15038_1737106971.png"
+      },
+      {
+        "title": "Unique Dining Places",
+        "places": "16 Places",
+        "slug": "iconic-restaurants",
+        "image": "https://b.zmtcdn.com/data/collections/f25923193488d2884f8689f185d418ef_1705558811.png"
+      }
+    ]
+  }
+}

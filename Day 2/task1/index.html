@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <div class="login-brand">
+                <span class="brand-mark">SMA</span>
+                <h1>Student Manager</h1>
+                <p>Sign in to continue</p>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter username" autocomplete="username">
+                    <span class="error-msg" id="loginUsernameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password" autocomplete="current-password">
+                    <span class="error-msg" id="loginPasswordError"></span>
+                </div>
+
+                <p class="login-hint">Use <strong>admin</strong> / <strong>password</strong></p>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="appLayout" class="app-layout hidden">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-mark">SM</span>
+                <div>
+                    <strong>Student Manager</strong>
+                    <span class="sidebar-user">Admin</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button type="button" class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">◫</span> Dashboard
+                </button>
+                <button type="button" class="nav-item" data-page="add">
+                    <span class="nav-icon">＋</span> Add User
+                </button>
+                <button type="button" class="nav-item" data-page="view">
+                    <span class="nav-icon">☰</span> View Users
+                </button>
+                <button type="button" class="nav-item" data-page="courses">
+                    <span class="nav-icon">▤</span> Courses
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button type="button" id="themeToggle" class="nav-item theme-btn" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span> Dark Mode
+                </button>
+                <button type="button" id="logoutBtn" class="nav-item logout-btn">
+                    <span class="nav-icon">⏻</span> Logout
+                </button>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <div class="topbar">
+                <button type="button" id="menuToggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+                <h2 id="pageTitle">Dashboard</h2>
+            </div>
+
+            <main class="content">
+                <section id="page-dashboard" class="page active">
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <span class="stat-label">Total Students</span>
+                            <span id="studentCount" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-card stat-card--teal">
+                            <span class="stat-label">Courses</span>
+                            <span id="courseCount" class="stat-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <span class="card-dot"></span>
+                            <h3>Quick Access</h3>
+                        </div>
+                        <div class="quick-grid">
+                            <button type="button" class="quick-card" data-goto="add">
+                                <span class="quick-icon">＋</span>
+                                <strong>Add User</strong>
+                                <span>Register a new student</span>
+                            </button>
+                            <button type="button" class="quick-card" data-goto="view">
+                                <span class="quick-icon">☰</span>
+                                <strong>View Users</strong>
+                                <span>See all students</span>
+                            </button>
+                            <button type="button" class="quick-card" data-goto="courses">
+                                <span class="quick-icon">▤</span>
+                                <strong>Courses</strong>
+                                <span>Add or edit courses</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <span class="card-dot card-dot--teal"></span>
+                            <h3>Recent Students</h3>
+                        </div>
+                        <div id="recentList" class="recent-list">
+                            <p class="empty-text">No students yet. Add one to get started.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="page-add" class="page">
+                    <div class="card">
+                        <div class="card-head">
+                            <span class="card-dot"></span>
+                            <h3 id="formTitle">Add New Student</h3>
+                        </div>
+                        <form id="studentForm" novalidate>
+                            <input type="hidden" id="studentId">
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" placeholder="e.g. Rahul Sharma">
+                                    <span class="error-msg" id="fullNameError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" placeholder="e.g. rahul@email.com">
+                                    <span class="error-msg" id="emailError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="age">Age</label>
+                                    <input type="number" id="age" placeholder="e.g. 20" min="1">
+                                    <span class="error-msg" id="ageError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="course">Course</label>
+                                    <select id="course">
+                                        <option value="">Select course</option>
+                                    </select>
+                                    <span class="error-msg" id="courseError"></span>
+                                    <p class="field-hint">Course list khali ho to pehle <button type="button" class="link-btn" data-goto="courses">Courses</button> mein add karo.</p>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" id="submitBtn" class="btn btn-primary">Add Student</button>
+                                <button type="button" id="cancelBtn" class="btn btn-secondary hidden">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section id="page-courses" class="page">
+                    <div class="card">
+                        <div class="card-head">
+                            <span class="card-dot"></span>
+                            <h3 id="courseFormTitle">Add New Course</h3>
+                        </div>
+                        <form id="courseForm" novalidate>
+                            <input type="hidden" id="courseId">
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="courseName">Course Name</label>
+                                    <input type="text" id="courseName" placeholder="e.g. MCA">
+                                    <span class="error-msg" id="courseNameError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" id="courseSubmitBtn" class="btn btn-primary">Add Course</button>
+                                <button type="button" id="courseCancelBtn" class="btn btn-secondary hidden">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <span class="card-dot card-dot--teal"></span>
+                            <h3>Course List</h3>
+                        </div>
+                        <div class="table-wrapper">
+                            <table id="courseTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Course Name</th>
+                                        <th>Students</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="courseTableBody">
+                                    <tr class="empty-row">
+                                        <td colspan="4">No courses added yet.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="page-view" class="page">
+                    <div class="card">
+                        <div class="controls-row">
+                            <div class="search-box">
+                                <label for="searchInput" class="visually-hidden">Search</label>
+                                <span class="search-icon" aria-hidden="true">⌕</span>
+                                <input type="text" id="searchInput" placeholder="Search by name or course...">
+                            </div>
+                            <div class="filter-box">
+                                <label for="courseFilter">Filter by Course</label>
+                                <select id="courseFilter">
+                                    <option value="">All Courses</option>
+                                </select>
+                            </div>
+                            <div class="sort-box">
+                                <label for="sortSelect">Sort by Name</label>
+                                <select id="sortSelect">
+                                    <option value="asc">A → Z</option>
+                                    <option value="desc">Z → A</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <span class="card-dot card-dot--teal"></span>
+                            <h3>Student List</h3>
+                        </div>
+                        <div class="table-wrapper">
+                            <table id="studentTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Age</th>
+                                        <th>Course</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentTableBody">
+                                    <tr class="empty-row">
+                                        <td colspan="6">No students added yet.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="sidebarOverlay" class="sidebar-overlay hidden"></div>
+
+    <div id="deleteModal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-icon">⚠</div>
+            <h3 id="modalTitle">Confirm Delete</h3>
+            <p id="modalMessage">Are you sure you want to delete this?</p>
+            <div class="modal-actions">
+                <button type="button" id="cancelDeleteBtn" class="btn btn-secondary">Cancel</button>
+                <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

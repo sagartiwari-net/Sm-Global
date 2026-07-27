@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase | Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar" id="navbar"></header>
+
+    <main class="page page-shop">
+        <section class="shop-hero">
+            <div class="shop-hero-content">
+                <p class="hero-eyebrow">ShopEase Collection</p>
+                <h1>Find products you love</h1>
+                <div class="hero-actions">
+                    <a href="#productsGrid" class="btn btn-primary">Start Shopping</a>
+                    <a href="wishlist.html" class="btn btn-outline">View Wishlist</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-head shop-head">
+            <div>
+                <h2>All Products</h2>
+                <p>Filter by category, search, or sort instantly</p>
+            </div>
+            <button type="button" class="btn btn-outline filter-toggle" id="filterToggle">
+                Filters
+            </button>
+        </div>
+
+        <div class="shop-layout">
+            <aside class="filter-sidebar card" id="filterSidebar">
+                <div class="filter-sidebar-head">
+                    <h2>Filters</h2>
+                    <button type="button" class="btn btn-ghost btn-sm" id="clearFiltersBtn">Clear</button>
+                </div>
+
+                <div class="filter-block">
+                    <label for="searchInput">Search</label>
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                </div>
+
+                <div class="filter-block">
+                    <p class="filter-label">Category</p>
+                    <div class="category-list" id="categoryList">
+                        <button type="button" class="category-btn active" data-category="">All Categories</button>
+                    </div>
+                    <select id="categoryFilter" class="visually-hidden" aria-hidden="true" tabindex="-1">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+
+                <div class="filter-block">
+                    <label for="sortSelect">Sort by</label>
+                    <select id="sortSelect">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating-desc">Rating: High to Low</option>
+                        <option value="rating-asc">Rating: Low to High</option>
+                    </select>
+                </div>
+
+                <div class="filter-tip">
+                    Tip: Use category + sort together to find products faster.
+                </div>
+            </aside>
+
+            <section class="shop-main">
+                <div class="shop-toolbar">
+                    <p id="resultsCount" class="muted">Loading products...</p>
+                </div>
+                <div id="productsGrid" class="products-grid"></div>
+
+                <section class="recent-section hidden" id="recentSection">
+                    <h3>Recently Viewed</h3>
+                    <div class="recent-grid" id="recentGrid"></div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <div class="filter-overlay hidden" id="filterOverlay"></div>
+
+    <script type="module" src="js/shop-page.js"></script>
+</body>
+</html>

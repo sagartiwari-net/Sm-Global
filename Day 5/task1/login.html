@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflix: '#E50914',
+            'netflix-black': '#141414',
+            'netflix-gray': '#737373',
+            'netflix-light': '#b3b3b3',
+            'netflix-border': '#808080',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="min-h-screen bg-black text-white font-sans">
+
+  <!-- Background -->
+  <div class="fixed inset-0 auth-bg" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="relative z-10 px-4 sm:px-8 lg:px-16 py-5">
+    <a href="index.html">
+      <img src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAUkLCBtHBbguPPqzaFOzEv4Pw_eS79j0y7ADR4hkB30-HkahpsUb5yvfzgKsfU2oNda-7hpkfYLnXhjc23JVT07PHsGgfsaHAB7qOhy2_5gn-nuKOVSUSBzn-i-O3ea2QQaXx3PYkHes.svg"
+           alt="Netflix" class="h-10 w-auto">
+    </a>
+  </header>
+
+  <!-- Login Form -->
+  <main class="relative z-10 flex items-center justify-center px-4 py-8 sm:py-12">
+    <div class="w-full max-w-md bg-black/75 rounded px-6 sm:px-12 py-10 sm:py-14">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Sign In</h1>
+
+      <div id="errorMsg" class="hidden mb-4 p-3 bg-orange-900/80 border border-orange-600 rounded text-sm"></div>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <input type="email" id="email" required placeholder="Email or mobile number"
+                 class="w-full bg-[#333] border border-[#333] rounded px-4 py-4 text-base text-white placeholder-netflix-light netflix-input focus:border-white">
+        </div>
+        <div>
+          <input type="password" id="password" required placeholder="Password"
+                 class="w-full bg-[#333] border border-[#333] rounded px-4 py-4 text-base text-white placeholder-netflix-light netflix-input focus:border-white">
+        </div>
+        <button type="submit"
+                class="w-full bg-netflix hover:bg-red-700 text-white text-base font-semibold py-3.5 rounded transition-colors mt-6">
+          Sign In
+        </button>
+      </form>
+
+      <div class="flex items-center justify-between mt-3 text-sm text-netflix-light">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" class="rounded accent-netflix">
+          Remember me
+        </label>
+        <a href="#" class="hover:underline">Need help?</a>
+      </div>
+
+      <div class="mt-12 text-netflix-gray">
+        <p class="mb-2">
+          New to Netflix?
+          <a href="signup.html" class="text-white hover:underline">Sign up now</a>.
+        </p>
+        <p class="text-xs leading-relaxed">
+          This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          <a href="#" class="text-blue-400 hover:underline">Learn more.</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 mt-auto px-4 sm:px-8 lg:px-16 py-8 text-netflix-gray text-sm">
+    <p class="mb-6">Questions? Call <a href="tel:000-800-919-1743" class="hover:underline">000-800-919-1743 (Toll-Free)</a></p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-3 gap-x-4 text-xs mb-6">
+      <a href="#" class="hover:underline">FAQ</a>
+      <a href="#" class="hover:underline">Help Centre</a>
+      <a href="#" class="hover:underline">Terms of Use</a>
+      <a href="#" class="hover:underline">Privacy</a>
+      <a href="#" class="hover:underline">Cookie Preferences</a>
+      <a href="#" class="hover:underline">Corporate Information</a>
+    </div>
+    <div class="relative inline-block">
+      <select class="appearance-none bg-transparent border border-netflix-gray/50 rounded px-8 py-2 text-sm cursor-pointer hover:border-white">
+        <option>English</option>
+        <option>हिन्दी</option>
+      </select>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script>
+    // Redirect if already logged in with profile
+    if (NetflixAuth.getSession() && NetflixAuth.getSelectedProfile()) {
+      window.location.href = 'browse.html';
+    } else if (NetflixAuth.getSession()) {
+      window.location.href = 'profiles.html';
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorEl = document.getElementById('errorMsg');
+      const result = NetflixAuth.login(email, password);
+
+      if (result.ok) {
+        window.location.href = 'profiles.html';
+      } else {
+        errorEl.textContent = result.message;
+        errorEl.classList.remove('hidden');
+      }
+    });
+
+    // Demo hint
+    console.info('Demo login: demo@netflix.com / demo123');
+  </script>
+</body>
+</html>
