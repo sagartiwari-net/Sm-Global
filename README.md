@@ -4,6 +4,8 @@ SMM Global training tasks — Day 1 through Day 9.
 
 Repo: [github.com/sagartiwari-net/Sm-Global](https://github.com/sagartiwari-net/Sm-Global)
 
+**All project GitHub links:** see [PROJECT_LINKS.md](./PROJECT_LINKS.md) (update this file whenever you add a new Day/task).
+
 ## Folder structure
 
 ```
