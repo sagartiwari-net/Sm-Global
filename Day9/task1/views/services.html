@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Apexline</title>
+  <meta name="description" content="Apexline services: websites, UI systems, and launch support." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="/">Apex<span>line</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-hero">
+      <p class="eyebrow">Services</p>
+      <h1>What Apexline can deliver</h1>
+      <p>Pick a lane — or combine them into a full launch package.</p>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon">WEB</div>
+          <h3>Multi-page websites</h3>
+          <p class="muted">Home, about, services, contact, gallery — with shared navigation and responsive layout.</p>
+        </article>
+        <article class="card delay-1">
+          <div class="icon">API</div>
+          <h3>Express servers</h3>
+          <p class="muted">Clean routing, static middleware, form handling, logging, and environment config.</p>
+        </article>
+        <article class="card delay-2">
+          <div class="icon">UX</div>
+          <h3>UI polish</h3>
+          <p class="muted">Motion, hierarchy, and mobile-first patterns that keep the experience cohesive.</p>
+        </article>
+        <article class="card delay-1">
+          <div class="icon">QA</div>
+          <h3>Error handling</h3>
+          <p class="muted">Custom 404 pages and validation feedback so broken paths never feel abandoned.</p>
+        </article>
+        <article class="card delay-2">
+          <div class="icon">SEO</div>
+          <h3>Content structure</h3>
+          <p class="muted">Semantic HTML, meta tags, and readable copy for each page.</p>
+        </article>
+        <article class="card delay-3">
+          <div class="icon">GO</div>
+          <h3>Launch support</h3>
+          <p class="muted">README, scripts, and deploy-ready structure for Render or Railway.</p>
+        </article>
+      </div>
+      <div class="actions" style="margin-top:1.5rem">
+        <a class="btn btn-primary" href="/contact">Request a quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Apexline</strong> — Day 9 Task 1 · Express multi-page demo</p>
+      <p>© <span id="year"></span> Apexline Studio</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
+</body>
+</html>

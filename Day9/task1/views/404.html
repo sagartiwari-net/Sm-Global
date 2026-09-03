@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Not Found | Apexline</title>
+  <meta name="description" content="Page not found — return to Apexline home." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="/">Apex<span>line</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="error-wrap container">
+    <div>
+      <p class="error-code">404</p>
+      <h1>Page not found</h1>
+      <p class="muted" style="max-width:28rem;margin:0.75rem auto 1.5rem">
+        The page you requested does not exist or may have moved.
+        Use the button below to return to the homepage.
+      </p>
+      <a class="btn btn-primary" href="/">Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Apexline</strong> — Day 9 Task 1 · Express multi-page demo</p>
+      <p>© <span id="year"></span> Apexline Studio</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
+</body>
+</html>

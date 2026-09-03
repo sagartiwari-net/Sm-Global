@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Apexline</title>
+  <meta name="description" content="Apexline gallery — selected visual concepts and layouts." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="/">Apex<span>line</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-hero">
+      <p class="eyebrow">Gallery</p>
+      <h1>Selected visual concepts</h1>
+      <p>Static images served through Express <code>express.static</code> middleware.</p>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img src="/images/gallery-1.svg" alt="Teal panel composition" loading="lazy" />
+          <figcaption>Brand panels</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/images/gallery-2.svg" alt="Orbit color study" loading="lazy" />
+          <figcaption>Orbit study</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/images/gallery-3.svg" alt="Wave landscape graphic" loading="lazy" />
+          <figcaption>Wave field</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/images/gallery-4.svg" alt="UI wire blocks" loading="lazy" />
+          <figcaption>UI blocks</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/images/gallery-5.svg" alt="Split layout concept" loading="lazy" />
+          <figcaption>Split layout</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="/images/gallery-6.svg" alt="Target mark graphic" loading="lazy" />
+          <figcaption>Focus mark</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Apexline</strong> — Day 9 Task 1 · Express multi-page demo</p>
+      <p>© <span id="year"></span> Apexline Studio</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
+</body>
+</html>

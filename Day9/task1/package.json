@@ -1,0 +1,27 @@
+{
+  "name": "day9-task1-apexline",
+  "version": "1.0.0",
+  "description": "Multi-page Express.js website — Day 9 Task 1 (SMM Global)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "multipage",
+    "smm-global"
+  ],
+  "author": "SMM Global",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

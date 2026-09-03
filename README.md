@@ -1,6 +1,6 @@
 # Sm-Global
 
-SMM Global training tasks — Day 1 through Day 6 (and future days).
+SMM Global training tasks — Day 1 through Day 9.
 
 Repo: [github.com/sagartiwari-net/Sm-Global](https://github.com/sagartiwari-net/Sm-Global)
 
@@ -21,44 +21,36 @@ SMM Global/
 │   └── task1/
 ├── Day 5/
 │   └── task1/
-└── Day6/
-    └── task1/          ← Zomato clone (React + Redux Toolkit)
+├── Day6/
+│   └── task1/          ← Zomato clone (React + Redux)
+├── Day7/
+│   └── task1/          ← BigBasket clone (React + Tailwind)
+├── Day8/
+│   └── task1/          ← SmmMynta PLP (DummyJSON API)
+└── Day9/
+    └── task1/          ← Apexline (Node + Express multi-page)
 ```
 
-## Run a project (example: Day 6)
+## Run examples
 
 ```bash
-cd "Day6/task1"
-npm install
-npm run dev
+# Day 8 (Vite React)
+cd "Day8/task1" && npm install && npm run dev
+
+# Day 9 (Express)
+cd "Day9/task1" && npm install && npm run dev
+# → http://localhost:3009
 ```
 
-## Upload new work to GitHub (future days)
-
-From this folder (`SMM Global`):
+## Upload new work to GitHub
 
 ```bash
-# 1) See what changed
-git status
-
-# 2) Stage everything (respects .gitignore)
 git add .
-
-# 3) Commit
-git commit -m "Add Day7 task1"
-
-# 4) Push
+git commit -m "Your message"
 git push
-```
-
-Or use the helper script:
-
-```bash
-./push.sh "Add Day7 task1"
 ```
 
 ## Notes
 
 - `node_modules`, `dist`, `.env`, and `.DS_Store` are ignored — do not commit them.
 - Keep new work as `Day N/taskX/` so the repo stays organized.
-- One repo for all days makes history and reviews easier.
